@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMeV1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-aF-8gw">
+                                <rect key="frame" x="0.0" y="195" width="390" height="377"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="390" id="1wT-HD-kZU"/>
+                                    <constraint firstAttribute="height" constant="377" id="YdB-rg-wrC"/>
+                                </constraints>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxy-c4-Sko">
+                                <rect key="frame" x="0.0" y="795" width="390" height="49"/>
+                                <items>
+                                    <barButtonItem title="Camera" image="camera.fill" catalog="system" width="231.66666666666666" id="hqW-LA-fBG">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="apD-Ag-A22"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Album " id="Ehy-sa-YDZ">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="NgG-FE-BlN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bm-xr-JMr">
+                                <rect key="frame" x="147" y="117" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jR5-wz-yQz">
+                                <rect key="frame" x="147" y="662" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="148" id="6Iq-eJ-U3d"/>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="trailing" secondItem="pxy-c4-Sko" secondAttribute="trailing" id="EjX-Pk-FJ1"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="pxy-c4-Sko" secondAttribute="bottom" constant="-34" id="ain-gp-VqK"/>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="leading" secondItem="pxy-c4-Sko" secondAttribute="leading" id="giz-iI-fiT"/>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="we1-Rm-bSh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="albumButton" destination="Ehy-sa-YDZ" id="2DT-yl-m51"/>
+                        <outlet property="cameraButton" destination="hqW-LA-fBG" id="IX7-NY-4g0"/>
+                        <outlet property="imagePickerView" destination="pHX-aF-8gw" id="ujA-Ga-nd3"/>
+                        <outlet property="textFieldBottom" destination="jR5-wz-yQz" id="wNu-UU-lpe"/>
+                        <outlet property="textFieldTop" destination="2bm-xr-JMr" id="u7E-BY-lru"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="101.53846153846153" y="3.5545023696682461"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
