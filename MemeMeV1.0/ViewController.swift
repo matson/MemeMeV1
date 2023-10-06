@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     // -- MARK: Attributes
     
     @IBOutlet weak var textFieldTop: UITextField!
@@ -29,11 +29,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        textFieldTop.defaultTextAttributes = memeTextAttributes
-        textFieldBottom.defaultTextAttributes = memeTextAttributes
-        textFieldTop.text = "TOP"
-        textFieldBottom.text = "BOTTOM"
+        setTextFields()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +42,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //if simulator:
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        shareButton.isEnabled = false
+        fixShareButton(factor: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,7 +51,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    // --MARK: Create Meme Objects
+    // --MARK: Create Meme Object Methods
     
     func save() {
         // Create the meme
@@ -64,8 +61,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func generateMemedImage() -> UIImage {
         
         //hide toolbar and navbar
-        toolBar.isHidden = true
-        navigationController?.navigationBar.isHidden = true
+        fixBars(factor: true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -74,13 +70,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         //show toolbar and navbar
-        toolBar.isHidden = false
-        navigationController?.navigationBar.isHidden = false
+        fixBars(factor: false)
         
         return memedImage
     }
     
-    // -- MARK: ToolBar Buttons
+    // -- MARK: Application Buttons
     
     @IBAction func pickAnImage(_ sender: UIBarButtonItem) {
         
@@ -95,10 +90,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func pickAnImageFromCamera(_ sender: UIBarButtonItem) {
         
         let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
+        imagePicker.delegate = self
         imagePicker.sourceType = .camera
-                present(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
+    
     @IBAction func share(_ sender: UIButton) {
         //generate a memed image
         let memedImage: UIImage = generateMemedImage()
@@ -117,30 +113,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    // -- MARK: ImagePicker Delegates
+    // -- MARK: ImagePicker Delegate Methods
     
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
             
-        //to set the selected image to the UIImageView:
+            //to set the selected image to the UIImageView:
             if let image = info[.originalImage] as? UIImage {
-                        imagePickerView.image = image
-            //once image is selected:
-            shareButton.isEnabled = true
-                    }
+                imagePickerView.image = image
+                //once image is selected:
+                fixShareButton(factor: true)
+            }
             
-        dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
             
-    }
-
+        }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         
         dismiss(animated: true, completion: nil)
-
+        
     }
     
-    // -- MARK: KeyBoard
+    // -- MARK: KeyBoard & Helper Functions
     
     func subscribeToKeyboardNotifications() {
         
@@ -148,7 +144,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
-
+    
     func unsubscribeFromKeyboardNotifications() {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -164,12 +160,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         view.frame.origin.y = .zero
     }
-        
+    
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
+    }
+    
+    func setTextFields(){
+        
+        textFieldTop.defaultTextAttributes = memeTextAttributes
+        textFieldBottom.defaultTextAttributes = memeTextAttributes
+        textFieldTop.text = "TOP"
+        textFieldBottom.text = "BOTTOM"
+        textFieldTop.textAlignment = .center
+        textFieldBottom.textAlignment = .center
+    }
+    
+    //for nav and tool bar
+    func fixBars(factor: Bool){
+        
+        toolBar.isHidden = factor
+        navigationController?.navigationBar.isHidden = factor
+        
+    }
+    
+    func fixShareButton(factor: Bool){
+        shareButton.isEnabled = factor
     }
     
     

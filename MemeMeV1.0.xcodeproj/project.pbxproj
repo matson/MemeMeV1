@@ -14,7 +14,6 @@
 		3FE31C862AC4B3E900B74A8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE31C842AC4B3E900B74A8D /* Main.storyboard */; };
 		3FE31C882AC4B3EA00B74A8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FE31C872AC4B3EA00B74A8D /* Assets.xcassets */; };
 		3FE31C8B2AC4B3EA00B74A8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE31C892AC4B3EA00B74A8D /* LaunchScreen.storyboard */; };
-		3FE31C932AC4BD2100B74A8D /* ImagePIckerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE31C922AC4BD2100B74A8D /* ImagePIckerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		3FE31C872AC4B3EA00B74A8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FE31C8A2AC4B3EA00B74A8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FE31C8C2AC4B3EA00B74A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FE31C922AC4BD2100B74A8D /* ImagePIckerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePIckerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +62,6 @@
 				3FE31C802AC4B3E900B74A8D /* SceneDelegate.swift */,
 				3FE31C822AC4B3E900B74A8D /* ViewController.swift */,
 				3F8AAC692AC764D1006D056A /* Meme.swift */,
-				3FE31C922AC4BD2100B74A8D /* ImagePIckerDelegate.swift */,
 				3FE31C842AC4B3E900B74A8D /* Main.storyboard */,
 				3FE31C872AC4B3EA00B74A8D /* Assets.xcassets */,
 				3FE31C892AC4B3EA00B74A8D /* LaunchScreen.storyboard */,
@@ -144,7 +141,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE31C932AC4BD2100B74A8D /* ImagePIckerDelegate.swift in Sources */,
 				3FE31C832AC4B3E900B74A8D /* ViewController.swift in Sources */,
 				3FE31C7F2AC4B3E900B74A8D /* AppDelegate.swift in Sources */,
 				3FE31C812AC4B3E900B74A8D /* SceneDelegate.swift in Sources */,

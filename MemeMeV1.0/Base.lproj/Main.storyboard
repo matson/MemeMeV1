@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_0" orientation="landscape" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMeV1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-aF-8gw">
-                                <rect key="frame" x="0.0" y="47" width="844" height="309"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="719"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eM-Wn-QfR">
                                 <rect key="frame" x="20" y="47" width="68" height="35"/>
@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxy-c4-Sko">
-                                <rect key="frame" x="0.0" y="312" width="844" height="44"/>
+                                <rect key="frame" x="0.0" y="766" width="390" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GeF-hn-i1w"/>
                                 </constraints>
@@ -48,20 +48,18 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q6m-du-9ds" userLabel="Top">
-                                <rect key="frame" x="129" y="111" width="133" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q6m-du-9ds" userLabel="Top">
+                                <rect key="frame" x="16" y="111" width="358" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="UZf-ga-vGt"/>
-                                    <constraint firstAttribute="width" constant="133" id="fge-vN-0e1"/>
+                                    <constraint firstAttribute="height" constant="34" id="Ybp-Vp-RVi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeW-AT-g0E" userLabel="Bottom">
-                                <rect key="frame" x="129" y="214" width="133" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeW-AT-g0E" userLabel="Bottom">
+                                <rect key="frame" x="16" y="668" width="358" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="dzK-J4-36b"/>
-                                    <constraint firstAttribute="width" constant="133" id="zmp-pD-ckW"/>
+                                    <constraint firstAttribute="height" constant="34" id="aNz-jo-7NM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -70,17 +68,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZeW-AT-g0E" secondAttribute="trailing" constant="16" id="0fI-02-h8C"/>
+                            <constraint firstItem="pxy-c4-Sko" firstAttribute="top" secondItem="pHX-aF-8gw" secondAttribute="bottom" id="5ut-cB-hM6"/>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8XL-td-fcJ"/>
+                            <constraint firstItem="ZeW-AT-g0E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GZl-Kx-s0N"/>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LrD-vr-OqM"/>
                             <constraint firstItem="pxy-c4-Sko" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ovx-CB-tEb"/>
-                            <constraint firstItem="pHX-aF-8gw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ve0-YI-3vh"/>
+                            <constraint firstItem="ZeW-AT-g0E" firstAttribute="top" secondItem="pHX-aF-8gw" secondAttribute="bottom" constant="-98" id="V3Z-Yq-NKe"/>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="top" secondItem="Q6m-du-9ds" secondAttribute="bottom" constant="-98" id="WWo-5g-scG"/>
                             <constraint firstItem="8eM-Wn-QfR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bDS-y1-ka3"/>
                             <constraint firstItem="8eM-Wn-QfR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="c7C-ve-6gB"/>
                             <constraint firstItem="Q6m-du-9ds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="drK-Sr-XgM"/>
-                            <constraint firstItem="pHX-aF-8gw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hC9-BP-oRP"/>
+                            <constraint firstItem="Q6m-du-9ds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fIB-uc-r1U"/>
+                            <constraint firstItem="pHX-aF-8gw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gyp-z8-T2d"/>
                             <constraint firstItem="pxy-c4-Sko" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hcz-Tl-AXe"/>
                             <constraint firstItem="pxy-c4-Sko" firstAttribute="top" secondItem="ZeW-AT-g0E" secondAttribute="bottom" constant="64" id="o86-Ty-m3x"/>
                             <constraint firstItem="pxy-c4-Sko" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pD9-VZ-la1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pHX-aF-8gw" secondAttribute="bottom" id="wjY-X1-lZy"/>
-                            <constraint firstItem="pHX-aF-8gw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yUg-Wf-E6V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q6m-du-9ds" secondAttribute="trailing" constant="16" id="zmc-EY-DKt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -95,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="-66.113744075829388"/>
+            <point key="canvasLocation" x="-729.23076923076917" y="-163.50710900473933"/>
         </scene>
     </scenes>
     <resources>
