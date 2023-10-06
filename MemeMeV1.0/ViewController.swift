@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
     // -- MARK: Attributes
     
@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -29,7 +29,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextFields()
+        setTextFields(textFieldTop, "TOP")
+        setTextFields(textFieldBottom, "BOTTOM")
         
     }
     
@@ -40,7 +41,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         subscribeToKeyboardNotifications()
         
         //if simulator:
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        fixCamera()
         
         fixShareButton(factor: false)
     }
@@ -83,19 +84,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imagePicker = UIImagePickerController()
         //set the delegate
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        pickImage(source: .photoLibrary, picker: imagePicker)
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: UIBarButtonItem) {
         
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        pickImage(source: .camera, picker: imagePicker)
     }
     
-    @IBAction func share(_ sender: UIButton) {
+    
+    @IBAction func share(_ sender: UIBarButtonItem) {
+        
         //generate a memed image
         let memedImage: UIImage = generateMemedImage()
         //define an instance of ActivityViewController
@@ -110,6 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             self.dismiss(animated: true, completion: nil)
         }
+        
     }
     
     
@@ -152,8 +154,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-        
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        if textFieldBottom.isFirstResponder {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
@@ -168,17 +171,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.cgRectValue.height
     }
     
-    func setTextFields(){
-        
-        textFieldTop.defaultTextAttributes = memeTextAttributes
-        textFieldBottom.defaultTextAttributes = memeTextAttributes
-        textFieldTop.text = "TOP"
-        textFieldBottom.text = "BOTTOM"
-        textFieldTop.textAlignment = .center
-        textFieldBottom.textAlignment = .center
+    func setTextFields(_ textField: UITextField, _ text: String){
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.text = text
+        textField.textAlignment = .center
     }
     
-    //for nav and tool bar
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //for nav, tool bar and camera
     func fixBars(factor: Bool){
         
         toolBar.isHidden = factor
@@ -190,6 +195,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         shareButton.isEnabled = factor
     }
     
+    func fixCamera(){
+#if targetEnvironment(simulator)
+        cameraButton.isEnabled = false
+#else
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+#endif
+    }
+    
+    func pickImage(source: UIImagePickerController.SourceType, picker: UIImagePickerController){
+        picker.sourceType = source
+        present(picker, animated: true, completion: nil)
+    }
     
 }
 
